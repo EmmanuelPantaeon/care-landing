@@ -59,16 +59,15 @@ function Hero() {
       animate="show"
     >
       <motion.div className="hero-badge" variants={fadeUp}>
-        <span>📱 Android App</span>
+        <span>📱 Official School App</span>
       </motion.div>
 
       <motion.h1 className="hero-title" variants={fadeUp}>
-        Education Funding <br />Made Easy
+        Student Loan Manager for <br />Colegio de San Gabriel Arcangel
       </motion.h1>
 
       <motion.p className="hero-subtitle" variants={fadeUp}>
-        C.A.R.E is the official student loan management app for
-        Colegio de San Gabriel Arcangel. Apply, track, and pay — all in one app.
+        Apply for student loans, track your balance, and make payments through GCash, Maya, or bank transfer — all in one app.
       </motion.p>
 
       <motion.div className="hero-actions" variants={fadeUp}>
@@ -81,7 +80,7 @@ function Hero() {
       </motion.div>
 
       <motion.p className="hero-meta" variants={fadeUp}>
-        Android 5.0+ • 15 MB • Version 1.0
+        Android 5.0+ • Version 1.0
       </motion.p>
 
       <motion.div
@@ -91,7 +90,7 @@ function Hero() {
         transition={{ duration: 0.8, delay: 0.6 }}
       >
         <div className="phone-screen">
-          <div className="phone-header">Hello, Kenneth!</div>
+          <div className="phone-header">Hello, Emmanuel!</div>
           <div className="phone-card">
             <div className="phone-label">Total Available</div>
             <div className="phone-amount">₱5,000.00</div>
