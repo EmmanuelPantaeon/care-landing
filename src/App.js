@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 
@@ -17,6 +17,7 @@ function App() {
     <div className="app">
       <Navbar />
       <Hero />
+      <LiveStats />
       <Features />
       <HowItWorks />
       <Install />
@@ -99,6 +100,66 @@ function Hero() {
           <div className="phone-row"></div>
         </div>
       </motion.div>
+    </motion.section>
+  );
+}
+
+// 🔥 LIVE STATS COMPONENT 🔥
+function LiveStats() {
+  const [stats, setStats] = useState({
+    students: 0,
+    loans: 0,
+    disbursed: 0
+  });
+
+  useEffect(() => {
+    // Fetch live data from your Render backend
+    fetch('https://loanmanagerbackend-4z2g.onrender.com/public-stats')
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          setStats({
+            students: data.totalStudents,
+            loans: data.totalLoans,
+            disbursed: data.totalDisbursed
+          });
+        }
+      })
+      .catch(err => console.error('Error loading stats:', err));
+  }, []);
+
+  // Format currency
+  const formatPeso = (amount) => {
+    return new Intl.NumberFormat('en-PH', {
+      style: 'currency',
+      currency: 'PHP',
+      maximumFractionDigits: 0
+    }).format(amount);
+  };
+
+  return (
+    <motion.section
+      className="stats-section"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6 }}
+    >
+      <h2 className="stats-title">C.A.R.E. by the Numbers</h2>
+      <div className="stats-container">
+        <div className="stat-box">
+          <h3>{stats.students}</h3>
+          <p>Students Registered</p>
+        </div>
+        <div className="stat-box">
+          <h3>{stats.loans}</h3>
+          <p>Loans Processed</p>
+        </div>
+        <div className="stat-box">
+          <h3>{formatPeso(stats.disbursed)}</h3>
+          <p>Total Disbursed</p>
+        </div>
+      </div>
     </motion.section>
   );
 }

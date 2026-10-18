@@ -363,4 +363,39 @@ body {
   .section-title { font-size: 30px; }
   .section { padding: 60px 20px; }
   .hero { padding: 40px 20px 40px; }
+  /* Live Stats Section */
+.stats-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.stats-title {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.stat-box h3 {
+  font-size: 48px;
+  color: #800000; /* Maroon brand color */
+  margin: 0;
+  font-weight: 800;
+}
+
+.stat-box p {
+  color: #666;
+  font-size: 16px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 }
