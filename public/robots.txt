@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
 Sitemap: https://care-landing-v76x.vercel.app/sitemap.xml

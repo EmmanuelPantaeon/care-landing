@@ -20,6 +20,7 @@ function App() {
       <LiveStats />
       <Features />
       <HowItWorks />
+      <HowToApply />
       <Install />
       <FAQ />
       <Footer />
@@ -40,6 +41,7 @@ function Navbar() {
         <div className="nav-links">
           <a href="#features">Features</a>
           <a href="#how">How It Works</a>
+          <a href="#how-to-apply">How to Apply</a>
           <a href="#install">Install</a>
           <a href="#faq">FAQ</a>
         </div>
@@ -104,7 +106,6 @@ function Hero() {
   );
 }
 
-// 🔥 LIVE STATS COMPONENT 🔥
 function LiveStats() {
   const [stats, setStats] = useState({
     students: 0,
@@ -113,7 +114,6 @@ function LiveStats() {
   });
 
   useEffect(() => {
-    // Fetch live data from your Render backend
     fetch('https://loanmanagerbackend-4z2g.onrender.com/public-stats')
       .then(response => response.json())
       .then(data => {
@@ -128,7 +128,6 @@ function LiveStats() {
       .catch(err => console.error('Error loading stats:', err));
   }, []);
 
-  // Format currency
   const formatPeso = (amount) => {
     return new Intl.NumberFormat('en-PH', {
       style: 'currency',
@@ -245,6 +244,76 @@ function HowItWorks() {
           </motion.div>
         ))}
       </div>
+    </section>
+  );
+}
+
+function HowToApply() {
+  const steps = [
+    { 
+      icon: '🔐', 
+      title: '1. Log In', 
+      desc: 'Open the app and log in using your Student Number (e.g., A20250001) and your password.' 
+    },
+    { 
+      icon: '📝', 
+      title: '2. Fill Out Form', 
+      desc: 'Tap "Apply for Loan", select your loan program, enter the amount, and choose your payment term.' 
+    },
+    { 
+      icon: '📄', 
+      title: '3. Upload Documents', 
+      desc: 'If it\'s your first time, you\'ll be prompted to upload your School ID and valid documents for verification.' 
+    },
+    { 
+      icon: '✅', 
+      title: '4. Get Approved', 
+      desc: 'A school manager will review your application. You will be notified once it is approved.' 
+    },
+    { 
+      icon: '💸', 
+      title: '5. Receive Funds', 
+      desc: 'Once approved, the funds will be disbursed, and you can view your amortization schedule in the app.' 
+    },
+    { 
+      icon: '📱', 
+      title: '6. Pay via App', 
+      desc: 'Pay your monthly dues easily using GCash, Maya, or Bank Transfer directly inside the app.' 
+    }
+  ];
+
+  return (
+    <section id="how-to-apply" className="section apply-section">
+      <motion.h2
+        className="section-title"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
+        How to Apply for a Loan
+      </motion.h2>
+
+      <motion.div
+        className="apply-grid"
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {steps.map((step, i) => (
+          <motion.div
+            key={i}
+            className="apply-card"
+            variants={fadeUp}
+            whileHover={{ y: -5 }}
+          >
+            <div className="apply-icon">{step.icon}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }
