@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import './App.css';
 
-const APK_URL = `${process.env.PUBLIC_URL}/download/app.apk.apk`;
+const APK_URL = `${process.env.PUBLIC_URL}/download/app.apk`;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 26 },
