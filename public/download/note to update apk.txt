@@ -1,0 +1,12 @@
+Run Command to Update apk to Vercel
+cd C:\Users\user\care-landing
+git add public/download/app.apk
+git commit -m "Update APK"
+git push
+
+
+Force Git to add the file (incase it's being ignored)
+cd C:\Users\user\care-landing
+git add -f public/download/app.apk
+git commit -m "Update APK"
+git push
